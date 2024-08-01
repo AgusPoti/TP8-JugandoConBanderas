@@ -29,6 +29,11 @@ export default function Home() {
     setUpdate(true);
   }, []);
 
+  const check = (input) => {
+    if(new String(input).toLowerCase() == banderaElegida.name.toLowerCase()){
+        console.log("Felicidades!")
+    }
+  }
 
   return (
     <main className={styles.main}>
