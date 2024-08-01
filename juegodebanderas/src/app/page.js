@@ -25,8 +25,6 @@ export default function Home() {
     setUpdate(true);
   }, []);
 
-
-
   return (
     <main>
       <h1>Flagpardy</h1>
