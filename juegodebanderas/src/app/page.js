@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [banderaElegida,  setBanderaElegida] = useState({});
   const [banderas,  setBanderas] = useState({});
+  const [puntos, setPuntos] = useState();
 
   useEffect(() => {
     axios.get("https://countriesnow.space/api/v0.1/countries/flag/images")
