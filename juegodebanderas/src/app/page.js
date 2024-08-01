@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import Input from "./Components/Input";
+import Bandera from "./Components/Bandera";
+import Button from "./Components/Button";
 
 export default function Home() {
   const [banderaElegida,  setBanderaElegida] = useState({});
@@ -24,6 +27,8 @@ export default function Home() {
           })
     setUpdate(true);
   }, []);
+
+
 
   return (
     <main>
