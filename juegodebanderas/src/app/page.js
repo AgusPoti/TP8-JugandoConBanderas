@@ -7,6 +7,14 @@ export default function Home() {
   const [banderaElegida,  setBanderaElegida] = useState({});
   const [banderas,  setBanderas] = useState([]);
   const [puntos, setPuntos] = useState();
+  const [update, setUpdate] = useState(false);
+
+  useEffect(() => {
+    var keys = Object.keys(banderas);
+    setBanderaElegida(banderas[keys[ keys.length * Math.random() << 0]]);
+    //setBanderas(Object.filter(p => {banderas, p => p.name !== banderaElegida.name;}));
+    setUpdate(false);
+  }, [update]);
 
   useEffect(() => {
     axios.get("https://countriesnow.space/api/v0.1/countries/flag/images")
@@ -14,17 +22,8 @@ export default function Home() {
         response => {
           setBanderas(response.data["data"]);
           })
+    setUpdate(true);
   }, []);
-
-  const cargarMas = () => {
-    var keys = Object.keys(banderas);
-    return setBanderaElegida(banderas[keys[ keys.length * Math.random() << 0]]);
-  }
-
-  useEffect(() => {
-    cargarMas()
-    //setBanderas(Object.filter(p => {banderas, p => p.name !== banderaElegida.name;}));
-  }, [cargarMas]);
 
 
 
@@ -34,7 +33,7 @@ export default function Home() {
       <ul>
         <img src={(banderaElegida !== undefined) ? banderaElegida.flag : ""}></img>
       </ul>
-      <button onClick={cargarMas}>Cargar más</button>
+      <button onClick={()=> setUpdate(true)}>Cargar más</button>
     </main>
   );
 }
