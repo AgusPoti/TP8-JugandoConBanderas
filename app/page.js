@@ -8,8 +8,10 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <h1>FLAGPARDY</h1>
-      <Link href="/Juego" className={styles.link}>Jugar</Link>
-      <Link href="/Ranking" className={styles.link}>Ranking</Link>
+      <div className={styles.container}>
+        <Link href="/Juego" className={styles.link}>Jugar</Link>
+        <Link href="/Ranking" className={styles.link}>Ranking</Link>
+      </div>
     </main>
   );
 }

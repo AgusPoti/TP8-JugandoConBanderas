@@ -237,4 +237,19 @@
   display: inline-block;
   background-color: #33e7e5;
   padding: 1rem 2rem;
+  margin: 0 .5rem
+}
+
+.link:hover {
+  background-color: #333;
+  color: #ff7321;
+  transition: background-color 300ms;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1.5rem;
 }
