@@ -1,10 +1,8 @@
-import styles from "./input.module.css";
+import styles from "./Input.module.css";
 
 export default function Input({iPlaceholder}) {
     return (
-        <div className={styles.container}>
-          <input className={styles.input} type="text" placeholder={iPlaceholder}></input>
-      </div>
+      <input className={styles.input} type="text" placeholder={iPlaceholder}></input>
     );
   }
   

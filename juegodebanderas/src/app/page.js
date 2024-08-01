@@ -5,6 +5,8 @@ import axios from 'axios';
 import Input from "./Components/Input";
 import Bandera from "./Components/Bandera";
 import Button from "./Components/Button";
+import styles from './page.module.css';
+import bStyles from './Components/Button/Button.module.css';
 
 export default function Home() {
   const [banderaElegida,  setBanderaElegida] = useState({});
@@ -31,11 +33,11 @@ export default function Home() {
 
 
   return (
-    <main>
-      <h1>Flagpardy</h1>
+    <main className={styles.main}>
+      <h1>FLAGPARDY</h1>
       <Bandera url={(banderaElegida !== undefined) ? banderaElegida.flag : ""}/>
       <Input iPlaceholder={"¿A qué país pertenece la bandera?"}/>
-      <button onClick={()=> setUpdate(true)}>Cargar más</button>
+      <button className={bStyles.boton} onClick={()=> setUpdate(true)}>Enviar</button>
     </main>
   );
 }
