@@ -33,9 +33,8 @@ export default function Home() {
   return (
     <main>
       <h1>Flagpardy</h1>
-      <ul>
-        <img src={(banderaElegida !== undefined) ? banderaElegida.flag : ""}></img>
-      </ul>
+      <Bandera url={(banderaElegida !== undefined) ? banderaElegida.flag : ""}/>
+      <Input iPlaceholder={"¿A qué país pertenece la bandera?"}/>
       <button onClick={()=> setUpdate(true)}>Cargar más</button>
     </main>
   );
