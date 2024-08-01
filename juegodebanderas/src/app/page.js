@@ -18,7 +18,7 @@ export default function Home() {
     
   return (
     <main>
-      <h1>Los pokemones son {banderas.count} </h1>
+      <h1>Flagpardy</h1>
     </main>
   );
 }
