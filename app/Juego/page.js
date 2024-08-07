@@ -6,18 +6,28 @@ import Input from "./../Components/Input";
 import Bandera from "./../Components/Bandera";
 import styles from './juego.module.css';
 import bStyles from './../Components/Button/Button.module.css';
+import MyTimer from "../Components/Timer";
 
 export default function Home() {
   const [banderaElegida,  setBanderaElegida] = useState({});
   const [banderas,  setBanderas] = useState([]);
   const [puntos, setPuntos] = useState();
   const [update, setUpdate] = useState(false);
+  const [rta, setRta] = useState("");
+
+  const [timer, setTimer] = useState(new Date(Date.now() + 15 * 1000));
+  const [updateTimer, setUpdateTimer] = useState(false);
 
   useEffect(() => {
+    if(banderaElegida !== undefined){
+      if(rta.toLowerCase().split(" ").join("") == String(banderaElegida.name).toLowerCase().split(" ").join("")){
+        setPuntos(puntos + 10);
+      }else{
+        setPuntos((puntos - 1 >= 0) ? puntos - 1 : 0);
+      }
+    }
     var keys = Object.keys(banderas);
     setBanderaElegida(banderas[keys[ keys.length * Math.random() << 0]]);
-    //setBanderas(Object.filter(p => {banderas, p => p.name !== banderaElegida.name;}));
-    setUpdate(false);
   }, [update]);
 
   useEffect(() => {
@@ -29,32 +39,22 @@ export default function Home() {
     setUpdate(true);
   }, []);
 
-  const check = (input) => {
-    if(new String(input).toLowerCase() == banderaElegida.name.toLowerCase()){
-        console.log("Felicidades!")
-    }
-  }
+  useEffect(() => {
+    console.log("updateado")
+    console.log(timer)
+    setTimer(new Date(Date.now() + 15 * 1000));
+    console.log(timer)
 
-
-  const verificarRta = () => {
-    if (respuestaUsuario.trim().toLowerCase() == banderaElegida.name?.trim().toLowerCase()) {
-      setPuntos(prevPuntos => prevPuntos + 10);
-    } else {
-      setPuntos(prevPuntos => prevPuntos - 1);
-    }
-    setRespuestaUsuario('');
-    cargarMas(banderas); 
-  }
-
+  }, [updateTimer])
+  console.log((banderaElegida!== undefined) ? banderaElegida.name : "no hay nada");
+  
   return (
     <main className={styles.main}>
       <h1>FLAGPARDY</h1>
       <Bandera url={(banderaElegida !== undefined) ? banderaElegida.flag : ""}/>
-      <Input iPlaceholder={"¿A qué país pertenece la bandera?"}/>
-      <button className={bStyles.boton} onClick={()=> setUpdate(true)}>Enviar</button>
-      <button className={bStyles.boton} onClick={cargarMas}>Enviar</button>
-      <button className={bStyles.boton} onClick={verificarRta}>Verificar respuesta</button>
-      <h5>puntos: {puntps}</h5>
+      <Input iPlaceholder={"¿A qué país pertenece la bandera?"} sendText={"Enviar"} update={update} setUpdate={setUpdate} setRta={setRta}/>
+      <MyTimer expiryTimestamp={timer} updater={setUpdateTimer} update={updateTimer}></MyTimer>
+      <h5>Puntos: {puntos}</h5>
     </main>
   );
 }
