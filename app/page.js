@@ -14,7 +14,6 @@ export default function Home() {
     <main className={styles.main}>
       <h1>FLAGPARDY</h1>
       <Link href="/Juego">Jugar</Link>
-      <Link href="/Ranking">Ranking</Link>
     </main>
   );
 }
